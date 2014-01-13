@@ -19,13 +19,10 @@ def login():
     password = request.forms.get('password')
 
     connection_string = 'DRIVER={SQL Server};SERVER=%s;DATABASE=SportInfrastructure;UID=%s;PWD=%s' % (host, username, password)
-
     try:
         connection = pyodbc.connect(connection_string)
     except:
         return 'Error'
-
-    return 'OK'
 
     return template('main_page')
 
