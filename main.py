@@ -2,12 +2,15 @@ __author__ = 'Daniel Abramov'
 
 import pyodbc
 
-from bottle import route, run, debug, template, request
-
+from bottle import route, run, debug, template, request, static_file
 
 @route('/index')
 def main_page():
     return template('auth_form')
+
+@route('/bootstrap/<filepath:path>')
+def file_get(filepath):
+    return static_file(filepath, root='bootstrap')
 
 @route('/login', method='POST')
 def login():
@@ -23,6 +26,8 @@ def login():
         return 'Error'
 
     return 'OK'
+
+    return template('main_page')
 
 debug(True)
 run(reloader=True)
