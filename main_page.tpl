@@ -104,12 +104,19 @@
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
+
+            % pages = [ 'Home', 'AllCompetitions', 'SportsmenWithSports', 'SportsmenWithCoaches', 'AllParticipants' ]
+            % page_index = pages.index(page)
+            %# states = [ "" for x in range(len(pages)) ]
+            % states = [ '', '', '', '', '' ]
+            % states[page_index] = "active"
+
               <ul class="nav">
-                <li class=""><a href="/main_page/Home">Home</a></li>
-                <li><a href="/main_page/AllCompetitions">All Competitions</a></li>
-                <li><a href="/main_page/SportsmenWithSports">Sportsmen With Sports</a></li>
-                <li><a href="/main_page/SportsmenWithCoaches">Sporsmen With Their Coaches</a></li>
-                <li><a href="/main_page/AllParticipants">All Competition Participants</a></li>
+                <li class="{{states[0]}}"><a href="/main_page/Home">Home</a></li>
+                <li class="{{states[1]}}"><a href="/main_page/AllCompetitions">All Competitions</a></li>
+                <li class="{{states[2]}}"><a href="/main_page/SportsmenWithSports">Sportsmen With Sports</a></li>
+                <li class="{{states[3]}}"><a href="/main_page/SportsmenWithCoaches">Sporsmen With Their Coaches</a></li>
+                <li class="{{states[4]}}"><a href="/main_page/AllParticipants">All Competition Participants</a></li>
               </ul>
             </div>
           </div>
@@ -126,6 +133,14 @@
       <!-- Available Information -->
       %if rows != None:
       <table class="table table-striped">
+
+      <thead>
+        %for column in columns:
+          <th>{{column}}</th>
+        %end
+      </thead>
+
+      <tbody>
         %for row in rows:
           <tr>
             %for col in row:
@@ -133,6 +148,8 @@
             %end
           </tr>
         %end
+      </tbody>
+
       </table>
       %end
       <hr>

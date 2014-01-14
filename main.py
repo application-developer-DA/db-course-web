@@ -32,13 +32,14 @@ def login():
 @route('/main_page/<name>')
 def chosen_page(name):
     if name == 'Home':
-        return template('main_page', rows=None)
+        return template('main_page', page=name, rows=None)
 
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM %s" % name)
     rows = cursor.fetchall()
-    print(rows)
-    return template('main_page', rows=rows)
+    columns = [column[0] for column in cursor.description]
+
+    return template('main_page', page=name, rows=rows, columns=columns)
 
 debug(True)
 run(reloader=True)
