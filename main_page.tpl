@@ -105,11 +105,11 @@
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">All Competitions</a></li>
-                <li><a href="#">Sportsmen With Sports</a></li>
-                <li><a href="#">Sporsmen With Their Coaches</a></li>
-                <li><a href="#">All Competition Participants</a></li>
+                <li class="active"><a href="/main_page/Home">Home</a></li>
+                <li><a href="/main_page/AllCompetitions">All Competitions</a></li>
+                <li><a href="/main_page/SportsmenWithSports">Sportsmen With Sports</a></li>
+                <li><a href="/main_page/SportsmenWithCoaches">Sporsmen With Their Coaches</a></li>
+                <li><a href="/main_page/AllParticipants">All Competition Participants</a></li>
               </ul>
             </div>
           </div>
@@ -123,7 +123,18 @@
       </div>
 
       <hr>
-      <!-- TODO -->
+      <!-- Available Information -->
+      %if rows != None:
+      <table class="table table-striped">
+        %for row in rows:
+          <tr>
+            %for col in row:
+              <td>{{col}}</td>
+            %end
+          </tr>
+        %end
+      </table>
+      %end
       <hr>
 
       <div class="footer">
