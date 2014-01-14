@@ -27,7 +27,7 @@ def login():
     except:
         return 'Error'
 
-    return template('main_page', rows=None)
+    redirect('main_page/Home')
 
 @route('/main_page/<name>')
 def chosen_page(name):
