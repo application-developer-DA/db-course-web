@@ -5,9 +5,34 @@
 
 <head>
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <style type="text/css">
+
+    html, body{height:100%; margin:0;padding:0}
+
+    .container-fluid{
+      height:100%;
+      display:table;
+      width: 100%;
+      padding: 0;
+    }
+
+    .row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
+
+    .centering {
+      float:none;
+      margin:0 auto;
+    }
+
+  </style>
+
 </head>
 
 <body>
+
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="span6 offset3">
 <form class="form-horizontal" action="login" method="post">
   <div class="control-group">
     <label class="control-label" for="inputEmail">Hostname</label>
@@ -33,6 +58,10 @@
     </div>
   </div>
 </form>
+</div>
+</div>
+</div>
+
 </body>
 
 </html>
