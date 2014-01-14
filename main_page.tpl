@@ -126,7 +126,7 @@
       <!-- Jumbotron -->
       <div class="jumbotron">
         <h1>Sport Infrastructure</h1>
-        <p class="lead">In this page you can navigate through navigation menu, choose information which you are interested in</p>
+        <p class="lead">You can navigate through navigation menu, choose information which you are interested in</p>
       </div>
 
       <hr>

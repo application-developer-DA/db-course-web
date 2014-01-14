@@ -29,13 +29,21 @@ def login():
 
     redirect('main_page/Home')
 
+queries = {
+    'AllCompetitions' : "SELECT [Competition Name], [Competition Date], [Sport Name], [Building Name], [Organization Name] FROM AllCompetitions",
+    'SportsmenWithSports' : "SELECT [Firstname] + ' ' + [Lastname] + ' ' + [Middlename] AS Name, [Birthdate], [Sport], [Title] FROM SportsmenWithSports",
+    'SportsmenWithCoaches' : "SELECT [Learner Firstname] + ' ' + [Learner Lastname] + ' ' + [Learner Middlename] AS [Learner Name], [Coach Firstname] + ' ' + [Coach Lastname] + ' ' + [Coach Middlename] AS [Coach Name], [Sport] FROM SportsmenWithCoaches",
+    'AllParticipants' : "SELECT [Firstname] + ' ' + [Lastname] + ' ' + [Middlename] AS Name, [Scores], [Club], [Competition Name], [Competiton Date] FROM AllParticipants"
+}
+
 @route('/main_page/<name>')
 def chosen_page(name):
     if name == 'Home':
         return template('main_page', page=name, rows=None)
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM %s" % name)
+    query = queries[name]
+    cursor.execute(query)
     rows = cursor.fetchall()
     columns = [column[0] for column in cursor.description]
 
